@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
   
   # Password validation
   it { should validate_presence_of(:password) }
-  it { should have_secure_password }
-  #it { should validate_length_of(:password).is_at_least(6) }
+  #it { should have_secure_password } #Come back to this one
+  it { should validate_length_of(:password).is_at_least(6) }
   
   describe "attributes" do
     it "should respond to email" do

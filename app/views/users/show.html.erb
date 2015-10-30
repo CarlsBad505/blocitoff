@@ -1,0 +1,4 @@
+<% provide(:title, @user.name) %>
+<h1><%= "#{@user.name}'s To Do List!" %></h1>
+<p><%= mail_to "Email #{@user.name}", @user.email %></p>
+

@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+  config.action_mailer.default_url_options = { host: 'https://bloc-foundation-carlsbad505.c9.io/' }
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -18,16 +18,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   # smtp setup
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:        'smtp.sendgrid.net',
-    port:           '2525',
-    authentication: :plain,
-    user_name:      ENV['SENDGRID_USERNAME'],
-    password:       ENV['SENDGRID_PASSWORD'],   
-    domain:         'heroku.com',
-    enable_starttls_auto: true
-  }
+  
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

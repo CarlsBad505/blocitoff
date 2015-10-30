@@ -23,5 +23,7 @@ RSpec.describe User, type: :model do
     it "should respond to password" do
       expect(user).to respond_to(:password)
     end
+    
+    # name attribute
   end
 end

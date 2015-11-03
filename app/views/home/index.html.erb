@@ -1,5 +1,42 @@
-<div class="jumbotron">
-<h1>BlocItOff</h1>
-<p>The world's favorite self destructing to-do list!</p>
-<p><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title_for(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1 id="jumbotron-h1">BlocItOff</h1>
+    <p id="jumbotron-p">The world's favorite self destructing to-do list!</p>
+    <div id="jumbotron-b">
+      <p><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="header-h2">Never Have Your List Pile Up Again</h2>
+          <div class="thumbnail">
+            <img src="http://cdn2.hubspot.net/hub/190654/file-28983710-jpg/images/messy_stack_of_papers-resized-600.jpg">
+          </div>
+      </div>
+      <div class="col-md-4">
+        <h2 class="header-h2">Create Urgency With Timelines</h2>
+          <div class="thumbnail">
+            <img src="http://www.pancreaticcancercanada.ca/images/content/pagebuilder/happy-people2.jpg">
+          </div>
+      </div>
+      <div class="col-md-4">
+        <h2 class="header-h2">Accountability Gets Things Done!</h2>
+          <div class="thumbnail">
+            <img src="http://icdn4.digitaltrends.com/image/to-do-list-checklist-gtd-getting-things-done-1000x667.jpg">
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

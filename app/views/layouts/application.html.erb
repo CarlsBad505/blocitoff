@@ -7,13 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if user_signed_in? %>
-    Welcome, <strong><%= link_to current_user.name, user_path(current_user) %></strong>! |
-    <%= link_to "Edit Profile", edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-  <% else %>
-    <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %> - 
-    <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
-  <% end %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!--<a class="navbar-brand" href="#">-->
+          <h3><%= link_to "BlocItOff", root_path, :class => 'navbar-btn' %></h3>
+        <!--</a>-->
+      </div>
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          <span style="color:#378BFF">Welcome,</span> <strong><%= link_to current_user.name, user_path(current_user) %></strong>! |
+          <%= link_to "Edit Profile", edit_user_registration_path, :class => 'navbar-btn' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-btn' %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %> -
+          <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 
 <%= yield %>
 

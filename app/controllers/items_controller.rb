@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.items.build(item_params)
+    @user = current_user
     if @item.save
       flash[:notice] = "Your item was saved successfully!"
     else

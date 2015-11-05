@@ -12,13 +12,19 @@ RSpec.describe ItemsController, type: :controller do
     end
     
     it "assigns Item.last to @item" do
-      post :create, item: {name: "get haircut", user: user}
+      post :create, item: {name: "get haircut"}, user_id: user
       expect(assigns(:item)).to eq(Item.last)
+    end
+  end
+    
+  describe "POST #create signed in user" do
+    before do
+      sign_in(user) # Figure out the helper method devise to sign_in
     end
     
     it "redirects to user show page" do
-      post :create, item: {name: "get haircut", user: user}
-      expect(response).to redirect_to(user_path)
+      post :create, item: {name: "get haircut"}, user_id: user
+      expect(response).to redirect_to(user_path(user))
     end
   end
 

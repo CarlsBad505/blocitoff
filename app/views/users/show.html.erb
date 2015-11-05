@@ -1,4 +1,37 @@
 <% provide(:title, @user.name) %>
-<h1><%= "#{@user.name}'s To Do List!" %></h1>
-<p><%= mail_to "Email #{@user.name}", @user.email %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 id="header"><%= "#{@user.name}'s To Do List!" %></h1>
+    <p id="header">Contact: <%= mail_to "Email #{@user.name}", @user.email %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3 id="header">To Do's</h3>
+    <ul class="list-unstyled">
+      <% @user.items.each do |item| %>
+        <div class="js-items">
+          <li><%= render partial: 'items/item', locals: { item: item } %></li>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <h3>Created At</h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Time Remaining</h3>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <h3 id="header">Create New To Do Item:</h3>
+  <div class="new-item">
+    <%= render partial: 'items/form', locals: { user: @user, item: @user.items.build } %>
+  </div>
+</div>
+
+
 

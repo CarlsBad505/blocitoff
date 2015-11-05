@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create!(email: "john.snow@gmail.com", password: "winteriscoming") }
+  let(:user) { User.create!(name: "john snow", email: "john.snow@gmail.com", password: "winteriscoming") }
+  
+  # References test
+  it { should have_many(:items) }
   
   # Email validation
   it { should validate_presence_of(:email) }
@@ -12,8 +15,12 @@ RSpec.describe User, type: :model do
   
   # Password validation
   it { should validate_presence_of(:password) }
-  #it { should have_secure_password } #Come back to this one
   it { should validate_length_of(:password).is_at_least(6) }
+  
+  # Name validation
+  it { should validate_presence_of(:name) }
+  it { should validate_length_of(:name).is_at_least(1) }
+  # before_save camel case the name test... controller test?
   
   describe "attributes" do
     it "should respond to email" do
@@ -24,6 +31,8 @@ RSpec.describe User, type: :model do
       expect(user).to respond_to(:password)
     end
     
-    # name attribute
+    it "should respond to name" do
+      expect(user).to respond_to(:name)
+    end
   end
 end

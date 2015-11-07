@@ -7,44 +7,26 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <h3 id="header">To Do's</h3>
-    <ul class="list-unstyled">
+<div class="container">
+  <div class="col-md-4" id="form-pad">
+    <h3 id="form-header">Create New To Do Item:</h3>
+    <div class="new-item">
+      <%= render partial: 'items/form', locals: { user: @user, item: Item.new } %>
+    </div>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <th>To-Do's</th>
+      <th>Created At</th>
+      <th>Time Remaining</th>
+      <th>Complete?</th>
+    </thead>
+    <tbody class="js-items">
       <% @user.items.each do |item| %>
-        <div class="js-items">
-          <li><%= render partial: 'items/item', locals: { item: item } %></li>
-        </div>
+        <%= render partial: "items/item", locals: {item: item} %>
       <% end %>
-    </ul>
-  </div>
-  <div class="media-body">
-    <div class="col-md-3">
-      <h3>Created At</h3>
-      <ul class="list-unstyled">
-        <% @user.items.each do |item| %>
-          <li id="list"><%= distance_of_time_in_words(item.created_at, Time.now) %> ago</li>
-        <% end %>  
-      </ul>
-    </div>
-    <div class="col-md-3">
-      <h3>Time Remaining</h3>
-      <ul class="list-unstyled">
-        <%= @user.items.each do |item| %>
-          <li id="list"><%= distance_of_time_in_words(Time.now, item.created_at + 7.day) %></li> 
-        <% end %>
-      </ul>
-    </div>
-  </div>
+    </tbody>
+  </table>
 </div>
-
-
-<div class="col-md-4">
-  <h3 id="header">Create New To Do Item:</h3>
-  <div class="new-item">
-    <%= render partial: 'items/form', locals: { user: @user, item: @user.items.build } %>
-  </div>
-</div>
-
-
 

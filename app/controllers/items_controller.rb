@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     @user = current_user
     if @item.save
-      flash[:notice] = "Your item was saved successfully!"
+      flash.now[:notice] = "Your item was saved successfully!"
     else
-      flash[:error] = "Item unsuccessful, please try again."
+      flash.now[:error] = "Item unsuccessful, please try again."
     end
     respond_to do |format|
       format.html
@@ -19,9 +19,9 @@ class ItemsController < ApplicationController
     @item = current_user.items.find(params[:id])
     @user = current_user
     if @item.destroy
-      flash[:notice] = "Your item was marked complete!"
+      flash.now[:notice] = "Your item was marked complete!"
     else 
-      flash[:error] = "Something went wrong, please try again."
+      flash.now[:error] = "Something went wrong, please try again."
     end
     respond_to do |format|
       format.html

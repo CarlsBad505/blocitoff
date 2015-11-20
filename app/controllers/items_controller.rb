@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @item = current_user.items.build(item_params)
     @user = current_user
+    @item = current_user.items.build(item_params)
     if @item.save
       flash.now[:notice] = "Your item was saved successfully!"
     else

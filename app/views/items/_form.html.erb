@@ -1,7 +1,15 @@
-<%= form_for [user, item], remote: true, authenticity_token: true do |f| %>
+<%= form_for [user, item], remote: true do |f| %>
   <div class="form-group">
     <%= f.label :name, class: 'sr-only' %>
-    <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your to-do item...' %>
+    <%= f.text_field :name, class: 'form-control', id: 'attr-to-send', placeholder: 'Enter your to-do item...' %>
   </div>
-  <%= f.submit "Add Item", class: 'btn btn-primary pull-left' %>
+  <%= f.submit "Add Item", class: 'btn btn-primary pull-left', id: 'commit-and-send' %>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    $('#commit-and-send').on('click', function(){
+      blocmetrics.report($('#attr-to-send').val())
+    })
+  })
+</script>

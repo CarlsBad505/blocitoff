@@ -6,5 +6,3 @@
   $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:error] %></div>");
   $('.new-item').html("<%= j(render partial: 'items/form', locals: { user: @user, item: @user.items.build }) %>");
 <% end %>
-
-blocmetrics.report('items');
